@@ -13,9 +13,16 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+
+from django.conf import settings
+from django.conf.urls import include, patterns, url
+from django.conf.urls.static import static
+from django.views.generic.base import TemplateView
 from django.contrib import admin
 
-urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-]
+urlpatterns = patterns('',
+    url(r'^$', 'django.views.static.serve', {'document_root': settings.STATICFILES_DIRS[0], 'path': 'index.html'}),
+    url(r'^account/', include('allauth.urls')),
+    url(r'^accounts/profile/$', TemplateView.as_view(template_name='profile.html')),
+
+) + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
