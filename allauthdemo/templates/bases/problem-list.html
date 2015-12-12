@@ -1,0 +1,23 @@
+{% extends "bases/bootstrap-minimal.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+	{% if problem_list %}
+    <ul>
+    {% for problem in problem_list %}
+    	<div>
+    		{{ problem.name }}
+    	</div>
+        <li><a href="{{ problem.link }}/">{{ problem.name }}</a></li>
+    {% endfor %}
+    </ul>
+	{% else %}
+    <p>No problems are available.</p>
+	{% endif %}
+
+
+</div>
+
+{% endblock %}
