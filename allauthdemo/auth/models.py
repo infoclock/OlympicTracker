@@ -14,14 +14,6 @@ except ImportError:
     from django.utils.encoding import force_unicode as force_text
 from allauth.account.signals import user_signed_up
 
-
-class Problem(models.Model):
-    problem_link = models.CharField(max_length=200)
-    problem_name = models.CharField(max_length=200)
-    problem_score = models.PositiveSmallIntegerField(default=0)
-
-    def __str__(self):
-        return force_text(self.problem_link)
         
 class MyUserManager(UserManager):
     """

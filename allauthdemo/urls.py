@@ -3,9 +3,11 @@ from django.contrib import admin
 from django.views.generic.base import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
-from . import views
 
+from . import views
 import allauthdemo.views
+from allauthdemo.demo.views import ProblemView
+
 
 admin.autodiscover()
 
@@ -13,7 +15,7 @@ urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='visitor/landing-index.html'), name='landing_index'),
     url(r'^about$', TemplateView.as_view(template_name='visitor/landing-about.html'), name='landing_about'),
 
-    url(r'^problem-list$', views.ProblemView.as_view(), name='problem_list'),
+    url(r'^problem-list$', ProblemView.as_view(), name='problem_list'),
 
     url(r'^terms/$', TemplateView.as_view(template_name='visitor/terms.html'), name='website_terms'),
     url(r'^contact$', TemplateView.as_view(template_name='visitor/contact.html'), name='website_contact'),

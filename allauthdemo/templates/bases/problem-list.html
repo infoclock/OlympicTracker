@@ -3,20 +3,35 @@
 
 {% block content %}
 
-<div class="container">
-	{% if problem_list %}
-    <ul>
-    {% for problem in problem_list %}
-    	<div>
-    		{{ problem.name }}
-    	</div>
-        <li><a href="{{ problem.link }}/">{{ problem.name }}</a></li>
-    {% endfor %}
-    </ul>
-	{% else %}
-    <p>No problems are available.</p>
-	{% endif %}
 
+<div class="container">
+	{% if problems_retrieved %}
+
+   <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th> Name </th>
+                <th> Score </th>
+            </tr>
+        </thead>
+        {% for problem in problems_retrieved %}
+          <tr>
+              <th class="text-nowrap" scope="row">
+                <div class="col-md-6">
+                  <a href="{{ problem.link }}/">
+                  <span> {{ problem.name }} </span>
+                </div>
+              </th>
+              <th
+              <td colspan="4">{{ problem.score }}</td>
+          </tr>
+      {% endfor %}
+      </table>
+  </div>
+  {% else %}
+    <p>No problems are available.</p>
+  {% endif %}
 
 </div>
 

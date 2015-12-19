@@ -34,8 +34,10 @@ that "just works", out of the box.
         $ make rebuild     # A bit better than `python manage.py syncdb`
         $ make run         # The same as `python manage.py runserver`
 
+4. InfoClock only. Load problem data
+        $ ./manage.py shell < init_script.py
 
-4. Visit http://127.0.0.1:8000/
+5. Visit http://127.0.0.1:8000/
 
 
 At this point you should have a site that allows registration and
