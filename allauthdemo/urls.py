@@ -27,4 +27,12 @@ urlpatterns = patterns('',
     url(r'^member/action$', allauthdemo.views.member_action, name='user_action'),
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^upload/', include('fileupload.urls')),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+from os.path import join, abspath, dirname
+urlpatterns += patterns('',
+    (r'^media/(.*)$', 'django.views.static.serve', {'document_root': join(abspath(dirname(__file__)), 'media')}),
+)

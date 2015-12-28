@@ -47,6 +47,8 @@ INSTALLED_APPS = (
 
     'allauthdemo.auth',
     'allauthdemo.demo',
+
+    'fileupload',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -83,6 +85,10 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_L10N = True
+
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/home/media/media.lawrence.com/media/"
+MEDIA_ROOT = os.path.abspath(os.path.dirname(__file__)) + '/media/'
 
 USE_TZ = True
 

@@ -19,14 +19,17 @@ that "just works", out of the box.
 
 ## Getting Running
 
+
 1. Install Python. I used Python 3.4.3 at the moment but 2.7.x works fine too.
 
 2. Install a ``virtualenv`` and requirements:
 
+        $ apt-get install libjpeg-dev
         $ cd demo-allauth-bootstrap
         $ virtualenv mypy
         $ . mypy/bin/activate
         $ pip install -r requirements.txt
+
 
 3. Set up and Run:
 
@@ -35,6 +38,7 @@ that "just works", out of the box.
         $ make run         # The same as `python manage.py runserver`
 
 4. InfoClock only. Load problem data
+
         $ ./manage.py shell < init_script.py
 
 5. Visit http://127.0.0.1:8000/
