@@ -7,8 +7,6 @@ from .models import Picture
 from .response import JSONResponse, response_mimetype
 from .serialize import serialize
 
-from django.contrib.auth.decorators import login_required
-
 
 class PictureCreateView(CreateView):
     model = Picture

@@ -8,7 +8,6 @@ from . import views
 import allauthdemo.views
 from allauthdemo.demo.views import ProblemView
 
-
 admin.autodiscover()
 
 urlpatterns = patterns('',
