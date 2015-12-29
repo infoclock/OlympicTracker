@@ -18,7 +18,8 @@
         // Register as an anonymous AMD module:
         define([
             'jquery',
-            'jquery.ui.widget'
+            'jquery.ui.widget',
+            './jquery.fileupload-validate'
         ], factory);
     } else {
         // Browser globals:
@@ -1210,6 +1211,7 @@
         },
 
         _getRegExp: function (str) {
+            console.log("LOLDASDASDASDASDSAD");
             var parts = str.split('/'),
                 modifiers = parts.pop();
             parts.shift();
