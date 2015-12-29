@@ -1,4 +1,4 @@
-from fileupload.models import Picture
+from fileupload.models import Submission
 from django.contrib import admin
 
-admin.site.register(Picture)
+admin.site.register(Submission)

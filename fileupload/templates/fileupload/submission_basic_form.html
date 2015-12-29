@@ -72,12 +72,11 @@ function csrfSafeMethod(method) {
 $(function () {
     'use strict';
     // Change this to the location of your server-side upload handler:
-    var url = '/upload/basic/';
+    var url = '/upload/basic/'
     var csrftoken = $.cookie('csrftoken');
 
     $('#fileupload').fileupload({
-        url: url,
-        prbId: $('#form_task option:selected').val(),
+        url: url + '?problem_pk=' + $('#form_task option:selected').val(),
         crossDomain: false,
         beforeSend: function(xhr, settings) {
             if (!csrfSafeMethod(settings.type)) {
