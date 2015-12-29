@@ -18,21 +18,20 @@ def order_name(name):
 
 
 def serialize(instance, file_attr='file'):
-    """serialize -- Serialize a Picture instance into a dict.
+    """serialize -- Serialize a submission instance into a dict.
 
-    instance -- Picture instance
-    file_attr -- attribute name that contains the FileField or ImageField
+    instance -- Submission instance
+    file_attr -- attribute name that contains the FileField
 
     """
     obj = getattr(instance, file_attr)
+    problem_obj = getattr(instance, 'problem')
     return {
         'url': obj.url,
         'name': order_name(obj.name),
-        'type': mimetypes.guess_type(obj.path)[0] or 'image/png',
-        'thumbnailUrl': obj.url,
+        'type': mimetypes.guess_type(obj.path)[0] or 'other',
         'size': obj.size,
-        'deleteUrl': reverse('upload-delete', args=[instance.pk]),
-        'deleteType': 'DELETE',
+        'problem_name': problem_obj.name,
     }
 
 
