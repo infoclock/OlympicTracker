@@ -16,8 +16,10 @@
     <br>
 
     <select class="form-control" id="form_task" name="task_id">
-        <option value="adunare">A+B</option>
-        <option value="flip">Flip</option>
+        {% for problem in problems_retrieved %}
+            <option value="{{ problem.pk }}">{{ problem.name }} </option>
+      {% endfor %}
+
     </select>
     <!-- The fileinput-button span is used to style the file input field as button -->
     <span class="btn btn-success fileinput-button" style="left:45%">
@@ -72,8 +74,10 @@ $(function () {
     // Change this to the location of your server-side upload handler:
     var url = '/upload/basic/';
     var csrftoken = $.cookie('csrftoken');
+
     $('#fileupload').fileupload({
         url: url,
+        prbId: $('#form_task option:selected').val(),
         crossDomain: false,
         beforeSend: function(xhr, settings) {
             if (!csrfSafeMethod(settings.type)) {

@@ -4,9 +4,10 @@ import json
 from django.http import HttpResponse
 from django.views.generic import CreateView, DeleteView, ListView
 from .models import Picture
+from allauthdemo.demo.models import Problem
+
 from .response import JSONResponse, response_mimetype
 from .serialize import serialize
-
 
 class PictureCreateView(CreateView):
     model = Picture
@@ -47,3 +48,9 @@ class PictureListView(ListView):
 
 class BasicVersionCreateView(PictureCreateView):
     template_name_suffix = '_basic_form'
+    context_object_name = 'picture'
+
+    def get_context_data(self, **kwargs):
+        context = super(BasicVersionCreateView, self).get_context_data(**kwargs)
+        context['problems_retrieved'] = Problem.objects.all()
+        return context
