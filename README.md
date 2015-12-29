@@ -1,21 +1,5 @@
 # InfoClock
 
-An out-of-the-box working example of [django-allauth](https://github.com/pennersr/django-allauth)
-using Twitter Bootstrap and showing some basic functionality like grabbing user name and profile
-picture at signup.
-
-## tl;dr
-
-You'll need to do quick setup with providers like Facebook and Google, but
-after that you should have a Django project with user signup and management
-that "just works", out of the box.
-
-## Objectives
-
-1. Help anyone building a new site get up and going quickly with allauth.
-
-2. Help remind me how a basic site hangs together ;)
-
 
 ## Getting Running
 
@@ -24,8 +8,7 @@ that "just works", out of the box.
 
 2. Install a ``virtualenv`` and requirements:
 
-        $ apt-get install libjpeg-dev
-        $ cd demo-allauth-bootstrap
+        $ cd OlympicTracker
         $ virtualenv mypy
         $ . mypy/bin/activate
         $ pip install -r requirements.txt
@@ -37,17 +20,17 @@ that "just works", out of the box.
         $ make rebuild     # A bit better than `python manage.py syncdb`
         $ make run         # The same as `python manage.py runserver`
 
-4. InfoClock only. Load problem data
+4. Load problem data
 
         $ ./manage.py shell < init_script.py
 
 5. Visit http://127.0.0.1:8000/
+6. Check out allauthdemo/urls.py . That's where the main app resides.
 
 
 At this point you should have a site that allows registration and
 login of local users. If you enabled Google or Facebook during ``make configure``,
 those destinations should allow you to join and log in to the site.
-
 
 ## Some Notes
 

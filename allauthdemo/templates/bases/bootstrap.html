@@ -18,10 +18,7 @@
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-
-  {% block head_css %}
-  <link rel="stylesheet" media="screen" href='{% static "css/main.css" %}'>
-  {% endblock %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
 
 </head>
 <body class='{% block pageclass %}{% endblock %}' {% block bodyattr %}{% endblock %}>
