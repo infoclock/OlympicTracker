@@ -4,7 +4,7 @@ import re
 from django.core.urlresolvers import reverse
 
 
-def order_name(name):
+def order_name(name, problem_name):
     """order_name -- Limit a text to 20 chars length, if necessary strips the
     middle of the text and substitute it for an ellipsis.
 
@@ -15,7 +15,6 @@ def order_name(name):
     if len(name) <= 20:
         return name
     return name[:10] + "..." + name[-7:]
-
 
 def serialize(instance, file_attr='file'):
     """serialize -- Serialize a submission instance into a dict.
@@ -28,7 +27,7 @@ def serialize(instance, file_attr='file'):
     problem_obj = getattr(instance, 'problem')
     return {
         'url': obj.url,
-        'name': order_name(obj.name),
+        'name': order_name(obj.name, problem_obj.name),
         'type': mimetypes.guess_type(obj.path)[0] or 'other',
         'size': obj.size,
         'problem_name': problem_obj.name,
