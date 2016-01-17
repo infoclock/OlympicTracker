@@ -20,4 +20,8 @@ class SubmissionView(generic.ListView):
     context_object_name = 'submissions'
 
     def get_queryset(self):
-        return Submission.objects.filter(user=self.request.user)
+        result = []
+        submissions = Submission.objects.filter(user=self.request.user)
+        for problem in Problem.objects.all():
+            result.append(submissions.filter(problem=problem).order_by('-last_modified').first())
+        return result

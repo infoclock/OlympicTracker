@@ -19,7 +19,7 @@ class Submission(models.Model):
     url = models.CharField(max_length=200, null=True, blank=True)
     user = models.ForeignKey(DemoUser, null=True)
     problem = models.ForeignKey(Problem, null=True)
-    last_modified = models.DateField(auto_now=True, null=True, blank=True)
+    last_modified = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     def __unicode__(self):
         return self.file.name
