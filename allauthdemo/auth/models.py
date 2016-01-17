@@ -14,7 +14,7 @@ except ImportError:
     from django.utils.encoding import force_unicode as force_text
 from allauth.account.signals import user_signed_up
 
-        
+
 class MyUserManager(UserManager):
     """
     Custom User Model manager.
@@ -41,7 +41,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
 
     Important: You don't have to use a custom user model. I did it here because
     I didn't want a username to be part of the system and I wanted other data
-    to be part of the user and not in a separate table. 
+    to be part of the user and not in a separate table.
 
     You can avoid the username issue without writing a custom model but it
     becomes increasingly obtuse as time goes on. Write a custom user model, then
@@ -141,6 +141,9 @@ class UserProfile(models.Model):
     avatar_url = models.CharField(max_length=256, blank=True, null=True)
 
     dob=models.DateField(verbose_name="dob", blank=True, null=True)
+    codeforces_handle = models.CharField(_('codeforces handle'), max_length=50, blank=True, null=True, unique=False)
+    infoarena_handle = models.CharField(_('infoarena handle'), max_length=50, blank=True, null=True, unique=False)
+    school_year = models.IntegerField(_('school'), blank=True, null=True, unique=False)
 
     def __str__(self):
         return force_text(self.user.email)
@@ -154,12 +157,12 @@ def set_initial_user_names(request, user, sociallogin=None, **kwargs):
     """
     When a social account is created successfully and this signal is received,
     django-allauth passes in the sociallogin param, giving access to metadata on the remote account, e.g.:
- 
-    sociallogin.account.provider  # e.g. 'twitter' 
+
+    sociallogin.account.provider  # e.g. 'twitter'
     sociallogin.account.get_avatar_url()
     sociallogin.account.get_profile_url()
     sociallogin.account.extra_data['screen_name']
- 
+
     See the socialaccount_socialaccount table for more in the 'extra_data' field.
 
     From http://birdhouse.org/blog/2013/12/03/django-allauth-retrieve-firstlast-names-from-fb-twitter-google/comment-page-1/
@@ -171,27 +174,27 @@ def set_initial_user_names(request, user, sociallogin=None, **kwargs):
         hashlib.md5(user.email.encode('UTF-8')).hexdigest(),
         preferred_avatar_size_pixels
     )
- 
+
     if sociallogin:
         # Extract first / last names from social nets and store on User record
         if sociallogin.account.provider == 'twitter':
             name = sociallogin.account.extra_data['name']
             user.first_name = name.split()[0]
             user.last_name = name.split()[1]
- 
+
         if sociallogin.account.provider == 'facebook':
             user.first_name = sociallogin.account.extra_data['first_name']
             user.last_name = sociallogin.account.extra_data['last_name']
             #verified = sociallogin.account.extra_data['verified']
             picture_url = "http://graph.facebook.com/{0}/picture?width={1}&height={1}".format(
                 sociallogin.account.uid, preferred_avatar_size_pixels)
- 
+
         if sociallogin.account.provider == 'google':
             user.first_name = sociallogin.account.extra_data['given_name']
             user.last_name = sociallogin.account.extra_data['family_name']
             #verified = sociallogin.account.extra_data['verified_email']
             picture_url = sociallogin.account.extra_data['picture']
- 
+
     profile = UserProfile(user=user, avatar_url=picture_url)
     profile.save()
 
