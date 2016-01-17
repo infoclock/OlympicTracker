@@ -56,7 +56,8 @@ class RankingView(generic.TemplateView):
             d['no_stress'] = user.score_fmi_no_stress / 20
             d['csacademy'] = user.score_csacademy / 20
             d['max_points'] = 100 if user.school_year == 1 else 140
-            d['nota'] = (d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy']) / d['max_points'] * 10
+            d['total'] = d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy']
+            d['nota'] = total / d['max_points'] * 10
             users.append(d)
         context['users'] = users
         return context
