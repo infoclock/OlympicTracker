@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views import generic
 
+from allauthdemo.auth.models import DemoUser
 from allauthdemo.demo.models import Problem
 from fileupload.models import Submission
+from allauthdemo.demo.models import ContestParticipation
 
 
 class ProblemView(generic.ListView):
@@ -30,3 +32,31 @@ class SubmissionView(generic.ListView):
             else:
                 bad_result.append(problem)
         return {'good': good_result, 'bad':bad_result}
+
+
+class RankingView(generic.TemplateView):
+    template_name = '../templates/bases/ranking-list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RankingView, self).get_context_data(**kwargs)
+        users = []
+        for user in DemoUser.objects.all():
+            d = {}
+            d['name'] = user.get_full_name()
+
+            d['homework_points'] = 0
+            submissions = Submission.objects.filter(user=user)
+            problem_ids = set()
+            for submission in submissions:
+                if submission.problem.id not in problem_ids:
+                    problem_ids.add(submission.problem.id)
+                    d['homework_points'] += submission.problem.score
+
+            d['codeforces_points'] = sum([x.score for x in ContestParticipation.objects.filter(user=user)])
+            d['no_stress'] = user.score_fmi_no_stress / 20
+            d['csacademy'] = user.score_csacademy / 20
+            d['max_points'] = 100 if user.school_year == 1 else 140
+            d['nota'] = (d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy']) / d['max_points'] * 10
+            users.append(d)
+        context['users'] = users
+        return context
