@@ -1,1 +1,137 @@
-[{"score": 5, "link": "http://www.infoarena.ro/problema/flip", "name": "flip"}, {"score": 15, "link": "http://www.infoarena.ro/problema/boundingbox", "name": "boundingbox"}]
+[
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/egipt",
+    "name": "egipt"
+  },
+  {
+    "score": 1,
+    "link": "http://codeforces.com/contest/585/problem/A",
+    "name": "Gennady_the_Dentist"
+  },
+  {
+    "score": 3,
+    "link": "https://code.google.com/codejam/contest/4244486/dashboard#s=p2&a=1",
+    "name": "Less_Money,_More_Problems"
+  },
+  {
+    "score": 3,
+    "link": "http://codeforces.com/contest/344/problem/E",
+    "name": "Read_Time"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/transport",
+    "name": "transport"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/nrtri",
+    "name": "nrtri"
+  },
+  {
+    "score": 2,
+    "link": "http://www.infoarena.ro/problema/secv6",
+    "name": "secv6"
+  },
+  {
+    "score": 2,
+    "link": "http://www.infoarena.ro/problema/editor",
+    "name": "editor"
+  },
+  {
+    "score": 2,
+    "link": "http://www.infoarena.ro/problema/trompeta",
+    "name": "trompeta"
+  },
+  {
+    "score": 2,
+    "link": "http://codeforces.com/contest/595/problem/B",
+    "name": "Pasha_And_Phone"
+  },
+  {
+    "score": 1,
+    "link": "http://codeforces.com/contest/595/problem/A",
+    "name": "Vitaly_and_Night"
+  },
+  {
+    "score": 2,
+    "link": "http://codeforces.com/contest/593/problem/B",
+    "name": "Anton_and_Lines"
+  },
+  {
+    "score": 1,
+    "link": "http://codeforces.com/contest/593/problem/A",
+    "name": "2Char"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/zeul",
+    "name": "zeul"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/trenul",
+    "name": "trenul"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/random",
+    "name": "random"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/licenta",
+    "name": "licenta"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/psychtraining",
+    "name": "psychtraining"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/buget",
+    "name": "buget"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/calandrinon",
+    "name": "calandrinon"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/hack",
+    "name": "hack"
+  },
+  {
+    "score": 1,
+    "link": "http://www.infoarena.ro/problema/porcjoc",
+    "name": "porcjoc"
+  },
+  {
+    "score": 3,
+    "link": "https://leetcode.com/problems/4sum/",
+    "name": "4sum"
+  },
+  {
+    "score": 2,
+    "link": "https://leetcode.com/problems/3sum-closest/",
+    "name": "3sum-closest"
+  },
+  {
+    "score": 2,
+    "link": "http://www.infoarena.ro/problema/hashuri",
+    "name": "hashuri"
+  },
+  {
+    "score": 2,
+    "link": "http://www.infoarena.ro/problema/secv5",
+    "name": "secv5"
+  },
+  {
+    "score": 2,
+    "link": "http://www.infoarena.ro/problema/string",
+    "name": "string"
+  }
+]

@@ -5,23 +5,58 @@
 {% block content %}
 
 <div class="container">
-	{% if submissions %}
-
+  <h1>Submitted problems</h1>
+	{% if submissions.good %}
    <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th> Date </th>
                 <th> Problem </th>
-                <th> Url </th>
+                <th> Source </th>
+                <th> Verification URL </th>
+                <th> Points </th>
             </tr>
         </thead>
         <tbody>
-        {% for submission in submissions %}
+        {% for submission in submissions.good %}
         <tr>
           <td>{{submission.last_modified}}</td>
           <td>{{submission.problem.name}}</td>
           <td><a href="/media/{{submission.file.url}}">URL</a></td>
+          <td>
+            {% if submission.url %}
+            <a href="{{ submission.url }}">URL</a>
+            {% else %}
+            N/A
+            {% endif %}
+          </td>
+          <td>{{submission.problem.score}}
+        </tr>
+        {% endfor %}
+        <tbody>
+      </body>
+      </table>
+  </div>
+  {% else %}
+    <p>No submissions have been sent.</p>
+  {% endif %}
+
+  <h1>Unsubmitted problems</h1>
+  {% if submissions.bad %}
+   <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th> Problem </th>
+                <th> Score </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for problem in submissions.bad %}
+        <tr>
+          <td>{{problem.name}}</td>
+          <td>{{problem.score}}</td>
         </tr>
         {% endfor %}
         <tbody>

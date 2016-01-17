@@ -2,6 +2,8 @@
 from django.db import models
 from allauthdemo.auth.models import DemoUser
 from allauthdemo.demo.models import Problem
+import os
+import binascii
 
 
 def user_directory_path(instance, filename):
@@ -10,7 +12,9 @@ def user_directory_path(instance, filename):
 
     if len(extension) != 0:
         extension = extension[-1]
-    return '{1}/{1}_user_{0}.{2}'.format(instance.user.id, instance.problem.name, extension)
+
+    random_part = str(binascii.hexlify(os.urandom(16)))[2:-1]
+    return '{1}/{1}_user_{0}_{3}.{2}'.format(instance.user.id, instance.problem.name, extension, random_part)
 
 
 class Submission(models.Model):
@@ -19,7 +23,7 @@ class Submission(models.Model):
     url = models.CharField(max_length=200, null=True, blank=True)
     user = models.ForeignKey(DemoUser, null=True)
     problem = models.ForeignKey(Problem, null=True)
-    last_modified = models.DateField(auto_now=True, null=True, blank=True)
+    last_modified = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     def __unicode__(self):
         return self.file.name
