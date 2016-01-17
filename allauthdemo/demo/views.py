@@ -20,8 +20,13 @@ class SubmissionView(generic.ListView):
     context_object_name = 'submissions'
 
     def get_queryset(self):
-        result = []
+        good_result = []
+        bad_result = []
         submissions = Submission.objects.filter(user=self.request.user)
         for problem in Problem.objects.all():
-            result.append(submissions.filter(problem=problem).order_by('-last_modified').first())
-        return result
+            submission = submissions.filter(problem=problem).order_by('-last_modified').first()
+            if submission:
+                good_result.append(submission)
+            else:
+                bad_result.append(problem)
+        return {'good': good_result, 'bad':bad_result}
