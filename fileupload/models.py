@@ -16,6 +16,7 @@ def user_directory_path(instance, filename):
 class Submission(models.Model):
     file = models.FileField(upload_to=user_directory_path)
     slug = models.SlugField(max_length=50, blank=True)
+    url = models.CharField(max_length=200, null=True, blank=True)
     user = models.ForeignKey(DemoUser, null=True)
     problem = models.ForeignKey(Problem, null=True)
 
