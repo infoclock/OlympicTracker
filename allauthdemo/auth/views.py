@@ -1,5 +1,3 @@
-
-
 from django.contrib import messages
 from django.views.generic.base import TemplateResponseMixin, View
 from django.views.generic.edit import FormView, ContextMixin, FormMixin, UpdateView
@@ -35,7 +33,6 @@ class DemoUserEditView(UpdateView):
     """
     form_class = DemoUserEditForm
     template_name = "auth/profile.html"
-    #success_url = '/email-sent/'
     view_name = 'account_profile'
     success_url = reverse_lazy(view_name)
 
@@ -43,11 +40,8 @@ class DemoUserEditView(UpdateView):
         return self.request.user
 
     def form_valid(self, form):
-        # TODO: not sure how to enforce *minimum* length of a field.
-        #print "form valid..."
-        #print "save to user:", self.request.user, form.cleaned_data
         form.save()
         messages.add_message(self.request, messages.INFO, 'User profile updated')
         return super(DemoUserEditView, self).form_valid(form)
-    
+
 account_profile = login_required(DemoUserEditView.as_view())
