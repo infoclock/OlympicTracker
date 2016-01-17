@@ -60,6 +60,7 @@ $(function () {
         $('#fileupload').fileupload({
             url: '/upload/basic/',
             crossDomain: false,
+            maxFileSize: 10240000, // 10MB
             formData: {
                 problem_pk: $('#form_task option:selected').val(),
             },
