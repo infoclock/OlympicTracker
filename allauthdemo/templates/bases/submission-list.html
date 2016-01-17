@@ -1,0 +1,37 @@
+{% extends user.is_authenticated|yesno:"bases/bootstrap-member.html,bases/bootstrap-minimal.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+	{% if submissions %}
+
+   <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th> Date </th>
+                <th> Problem </th>
+                <th> Url </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for submission in submissions %}
+        <tr>
+          <td>{{submission.last_modified}}</td>
+          <td>{{submission.problem.name}}</td>
+          <td><a href="/media/{{submission.file.url}}">URL</a></td>
+        </tr>
+        {% endfor %}
+        <tbody>
+      </body>
+      </table>
+  </div>
+  {% else %}
+    <p>No submissions have been sent.</p>
+  {% endif %}
+
+</div>
+
+{% endblock %}

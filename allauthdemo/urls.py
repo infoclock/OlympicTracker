@@ -6,7 +6,7 @@ from django.conf import settings
 
 from . import views
 import allauthdemo.views
-from allauthdemo.demo.views import ProblemView
+from allauthdemo.demo.views import ProblemView, SubmissionView
 
 admin.autodiscover()
 
@@ -15,13 +15,14 @@ urlpatterns = patterns('',
     url(r'^about$', TemplateView.as_view(template_name='visitor/landing-about.html'), name='landing_about'),
 
     url(r'^problem-list$', ProblemView.as_view(), name='problem_list'),
+    url(r'^submission-list$', SubmissionView.as_view(), name='submission'),
 
     url(r'^terms/$', TemplateView.as_view(template_name='visitor/terms.html'), name='website_terms'),
     url(r'^contact$', TemplateView.as_view(template_name='visitor/contact.html'), name='website_contact'),
 
     (r'^accounts/', include('allauth.urls')),
     url(r'^accounts/profile/$', 'allauthdemo.auth.views.account_profile', name='account_profile'),
- 
+
     url(r'^member/$', allauthdemo.views.member_index, name='user_home'),
     url(r'^member/action$', allauthdemo.views.member_action, name='user_action'),
 
