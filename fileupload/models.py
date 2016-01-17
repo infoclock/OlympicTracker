@@ -2,6 +2,8 @@
 from django.db import models
 from allauthdemo.auth.models import DemoUser
 from allauthdemo.demo.models import Problem
+import os
+import binascii
 
 
 def user_directory_path(instance, filename):
@@ -10,7 +12,9 @@ def user_directory_path(instance, filename):
 
     if len(extension) != 0:
         extension = extension[-1]
-    return '{1}/{1}_user_{0}.{2}'.format(instance.user.id, instance.problem.name, extension)
+
+    random_part = str(binascii.hexlify(os.urandom(16)))[2:-1]
+    return '{1}/{1}_user_{0}_{3}.{2}'.format(instance.user.id, instance.problem.name, extension, random_part)
 
 
 class Submission(models.Model):
