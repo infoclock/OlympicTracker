@@ -10,6 +10,7 @@
       <table class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th> No </th>
                 <th> Name </th>
                 <th> Homework </th>
                 <th> Codeforces </th>
@@ -24,6 +25,7 @@
         <tbody>
         {% for user in users %}
         <tr>
+          <td>{{forloop.counter}}</td>
           <td>{{user.name}}</td>
           <td>{{user.homework_points}}</td>
           <td>{{user.codeforces_points}}</td>
