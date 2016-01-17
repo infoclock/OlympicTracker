@@ -1,0 +1,40 @@
+{% extends user.is_authenticated|yesno:"bases/bootstrap-member.html,bases/bootstrap-minimal.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+  <h1>Ranking</h1>
+   <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th> Name </th>
+                <th> Homework </th>
+                <th> Codeforces </th>
+                <th> No Stress </th>
+                <th> CSAcademy </th>
+                <th> Max Points </th>
+                <th> Grade </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{user.name}}</td>
+          <td>{{user.homework_points}}</td>
+          <td>{{user.codeforces_points}}</td>
+          <td>{{user.no_stress}}</td>
+          <td>{{user.csacademy}}</td>
+          <td>{{user.max_points}}</td>
+          <td>{{user.nota}}</td>
+        </tr>
+        {% endfor %}
+        <tbody>
+      </body>
+      </table>
+  </div>
+</div>
+
+{% endblock %}

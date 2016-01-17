@@ -3,10 +3,11 @@ from django.contrib import admin
 from django.views.generic.base import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth.decorators import permission_required
 
 from . import views
 import allauthdemo.views
-from allauthdemo.demo.views import ProblemView, SubmissionView
+from allauthdemo.demo.views import ProblemView, SubmissionView, RankingView
 
 admin.autodiscover()
 
@@ -16,6 +17,7 @@ urlpatterns = patterns('',
 
     url(r'^problem-list$', ProblemView.as_view(), name='problem_list'),
     url(r'^submission-list$', SubmissionView.as_view(), name='submission'),
+    url(r'^ranking$', permission_required('is_staff')(RankingView.as_view()), name='ranking'),
 
     url(r'^terms/$', TemplateView.as_view(template_name='visitor/terms.html'), name='website_terms'),
     url(r'^contact$', TemplateView.as_view(template_name='visitor/contact.html'), name='website_contact'),
