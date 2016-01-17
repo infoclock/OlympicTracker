@@ -59,7 +59,7 @@ class RankingView(generic.TemplateView):
             d['max_points'] = 100 if user.school_year == 1 else 140
             d['total'] = d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy']
             pure_grade = round(float(d['total']) / float(d['max_points']) * 10)
-            d['nota'] = min(pure_grade, 10)
+            d['nota'] = min(pure_grade, 10.0)
             if d['nota'] >= 1:
                 users.append(d)
         context['users'] = sorted(users, key=lambda x: x['nota'], reverse=True)
