@@ -63,25 +63,4 @@ class DemoUserAdmin(UserAdmin):
 
     form = DemoUserAdminForm
 
-
-
-
-# *** NOTE ***
-# As the site uses email instead of username, I'm changing how a User object
-# displays or identifies itself in admin. The default in Django (file is
-# lib/python2.7/site-packages/django/contrib/auth/models.py) is
-#
-#    def __str__(self):
-#        return self.get_username()
-#
-#    def natural_key(self):
-#        return (self.get_username(),)
-#
-# I'm overriding that a cheap way. I'm not sure if I should replace the entire
-# User object ... might be better.
-#
-#User.__unicode__ = lambda(u): u.email
-#User.natural_key = lambda(u): (u.email,)
-
-#admin.site.unregister(DjangoDefaultUser)
 admin.site.register(DemoUser, DemoUserAdmin)
