@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.fileupload-ui.css">
     <!-- CSS adjustments for browsers with JavaScript disabled -->
     <noscript><link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.fileupload-ui-noscript.css"></noscript>
-    
+
     <!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
@@ -37,6 +37,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/problem-list">Problem List</a>
+          <a class="navbar-brand" href="/submission-list">Submission List</a>
           <a class="navbar-brand" href="{% url 'user_home' %}">Account Page</a>
         </div>
         <div class="navbar-collapse collapse">
@@ -70,5 +71,5 @@
     <h1>No content set</h1>
 {% endblock %}
 
-</body> 
+</body>
 </html>
