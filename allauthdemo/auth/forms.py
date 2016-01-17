@@ -12,10 +12,6 @@ class DemoUserEditForm(forms.ModelForm):
     """
 
     def __init__(self, *args, **kwargs):
-        # TODO: this doesn't seem to work. Need to get to the bottom of it.
-        #self.base_fields["display_name"].min_length = 2
-        #self.base_fields["display_name"].validators.append(MinLengthValidator)
-        #print self.base_fields['display_name'].validators
         super(forms.ModelForm, self).__init__(*args, **kwargs)
 
     class Meta:
