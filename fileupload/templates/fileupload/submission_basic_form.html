@@ -8,15 +8,19 @@
 <div class="container">
     <h1>Submit a problem</h1>
 
+    <div class="form-group">
+    <label for="form_task">Problem</label>
     <select class="form-control" id="form_task" name="task_id">
         {% for problem in problems_retrieved %}
             <option value="{{ problem.pk }}">{{ problem.name }} </option>
       {% endfor %}
     </select>
+    </div>
 
-    <input type="url" id="myInput">
-
-    <br>
+    <div class="form-group">
+    <label for="myInput">Submission URL (eg: http://www.infoarena.ro/job_detail/1528591)</label>
+    <input type="url" id="myInput" class="form-control">
+    </div>
 
     <!-- The fileinput-button span is used to style the file input field as button -->
     <span class="btn btn-success fileinput-button" style="left:45%">
