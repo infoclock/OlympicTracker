@@ -1,4 +1,3 @@
-import math
 from django.shortcuts import render
 from django.views import generic
 
@@ -59,7 +58,7 @@ class RankingView(generic.TemplateView):
             d['csacademy'] = user.score_csacademy / 20
             d['max_points'] = 100 if user.school_year == 1 else 140
             d['total'] = d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy']
-            pure_grade = math.round(float(d['total']) / float(d['max_points']) * 10)
+            pure_grade = round(float(d['total']) / float(d['max_points']) * 10)
             d['nota'] = min(pure_grade, 10)
             users.append(d)
         context['users'] = sorted(users, key=lambda x: x['nota'], reverse=True)
