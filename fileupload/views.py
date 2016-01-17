@@ -22,6 +22,7 @@ class SubmissionCreateView(CreateView):
         problem_object = problem_object[0]
 
         form.instance.problem = problem_object
+        form.instance.url = self.request.POST.get('myUrl')
 
         self.object = form.save()
 

@@ -14,6 +14,8 @@
       {% endfor %}
     </select>
 
+    <input type="url" id="myInput">
+
     <br>
 
     <!-- The fileinput-button span is used to style the file input field as button -->
@@ -54,7 +56,14 @@ function csrfSafeMethod(method) {
 }
 
 $(function () {
-    'use strict';
+    /* hack-ul vietii mele
+       cum contextele sunt foarte grele in javascript si nu inteleg de ce pe linia
+       68 in url: nu pot pune document.getElementById('myInput').value
+       la fiecare keyup apelez rahatul asta */
+    $("#myInput").keyup(function(e) {
+        $('#form_task').trigger('click');
+    }.bind(this))
+
     var csrftoken = $.cookie('csrftoken');
     $('#form_task').bind("click", function(){
         $('#fileupload').fileupload({
@@ -62,6 +71,7 @@ $(function () {
             crossDomain: false,
             maxFileSize: 10240000, // 10MB
             formData: {
+                myUrl: $('#myInput').val(),
                 problem_pk: $('#form_task option:selected').val(),
             },
             beforeSend: function(xhr, settings) {
@@ -87,7 +97,7 @@ $(function () {
             .parent().addClass($.support.fileInput ? undefined : 'disabled');
     });
     $('#form_task').trigger('click');
+}.bind(this));
 
-});
 </script>
 {% endblock %}
