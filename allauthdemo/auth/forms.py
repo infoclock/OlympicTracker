@@ -16,7 +16,8 @@ class DemoUserEditForm(forms.ModelForm):
 
     class Meta:
         model = DemoUser
-        fields = ('first_name', 'last_name', 'display_name', 'codeforces_handle', 'infoarena_handle', 'school_year')
+        fields = ('first_name', 'last_name', 'display_name', 'codeforces_handle',
+                  'infoarena_handle', 'school_year', 'score_fmi_no_stress', 'score_csacademy')
 
 
 class DemoUserAdminForm(forms.ModelForm):
