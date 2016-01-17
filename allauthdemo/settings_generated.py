@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
 
-
     'allauthdemo.auth',
     'allauthdemo.demo',
 

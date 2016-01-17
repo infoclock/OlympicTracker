@@ -17,11 +17,11 @@ class SubmissionCreateView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
 
-        problem_pk = self.request.GET.get('problem_pk') 
+        problem_pk = self.request.POST.get('problem_pk')
         problem_object = Problem.objects.filter(pk=problem_pk)
         problem_object = problem_object[0]
-        
-        form.instance.problem = problem_object 
+
+        form.instance.problem = problem_object
 
         self.object = form.save()
 
@@ -69,6 +69,6 @@ class SubmitList(ListView):
     model = Submission
     template_name_suffix = '_list'
     context_object_name = 'submissions'
-    
+
     def get_queryset(self):
         return Submission.objects.filter(user=self.request.user)
