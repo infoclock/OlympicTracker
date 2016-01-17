@@ -7,6 +7,7 @@ from allauthdemo.auth.models import DemoUser
 
 class Command(BaseCommand):
     CODEFORCES_JSON_DIR = os.path.join(settings.BASE_DIR, 'codeforces_json')
+    CONTEST_IDS = range(592, 616+1)
 
     def add_arguments(self, parser):
         parser.add_argument('--user',
@@ -16,14 +17,13 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        contest_ids = range(592, 616+1)
         users = []
         if options['user_handle']:
             users.append(DemoUser.objects.get(codeforces_handle=options['user_handle']))
         else:
             users = DemoUser.objects.all()
 
-        for contest in contest_ids:
+        for contest in CONTEST_IDS:
             contest_json_path = os.path.join(self.CODEFORCES_JSON_DIR, str(contest) + '.json')
             if (not os.path.isfile(contest_json_path)):
                 self.get_codeforces_json(contest)
