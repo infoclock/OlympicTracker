@@ -37,7 +37,7 @@ class Command(BaseCommand):
         print("Getting contest ", contest_id)
         contest_json_path = os.path.join(self.CODEFORCES_JSON_DIR, str(contest_id) + '.json')
 
-        resp = requests.get('http://codeforces.com/api/contest.standings?contestId=' + str(contest_id) + '&showUnofficial=true')
+        resp = requests.get('http://codeforces.com/api/contest.standings?contestId=' + str(contest_id))
         if resp.status_code == 200:
             with open(contest_json_path, 'wb') as stream:
                 stream.write(resp.content)
