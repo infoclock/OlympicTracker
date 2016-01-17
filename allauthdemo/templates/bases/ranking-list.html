@@ -18,6 +18,7 @@
                 <th> Total </th>
                 <th> Max Points </th>
                 <th> Grade </th>
+                <th> Edit </th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
           <td>{{user.total}}</td>
           <td>{{user.max_points}}</td>
           <td>{{user.nota}}</td>
+          <td><a href="/admin/allauthdemo_auth/demouser/{{user.id}}">Edit...</a></td>
         </tr>
         {% endfor %}
         <tbody>

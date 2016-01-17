@@ -43,6 +43,7 @@ class RankingView(generic.TemplateView):
         for user in DemoUser.objects.all():
             d = {}
             d['name'] = user.get_full_name()
+            d['id'] = user.id
 
             d['homework_points'] = 0
             submissions = Submission.objects.filter(user=user)
