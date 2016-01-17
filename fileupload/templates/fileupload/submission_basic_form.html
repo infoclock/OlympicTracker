@@ -57,10 +57,12 @@ $(function () {
     'use strict';
     var csrftoken = $.cookie('csrftoken');
     $('#form_task').bind("click", function(){
-        var url0 = '/upload/basic/' + '?problem_pk=' + $('#form_task option:selected').val();
         $('#fileupload').fileupload({
-            url: url0,
+            url: '/upload/basic/',
             crossDomain: false,
+            formData: {
+                problem_pk: $('#form_task option:selected').val(),
+            },
             beforeSend: function(xhr, settings) {
                 if (!csrfSafeMethod(settings.type)) {
                     xhr.setRequestHeader("X-CSRFToken", csrftoken);
