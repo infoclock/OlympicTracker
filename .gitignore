@@ -1,5 +1,6 @@
 # Django
 db.sqlite3
+seed.sql
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
