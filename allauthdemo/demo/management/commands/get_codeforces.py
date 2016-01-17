@@ -45,6 +45,7 @@ class Command(BaseCommand):
             print("Nu a mers.", resp.content)
 
     def get_user_results(self, user):
+        print(user.codeforces_handle)
         ContestParticipation.objects.filter(user=user).delete()
         for contest in self.CONTEST_IDS:
             contest_json_path = os.path.join(self.CODEFORCES_JSON_DIR, str(contest) + '.json')
