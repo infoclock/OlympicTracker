@@ -59,5 +59,5 @@ class RankingView(generic.TemplateView):
             d['total'] = d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy']
             d['nota'] = float(d['total']) / float(d['max_points']) * 10
             users.append(d)
-        context['users'] = users
+        context['users'] = sorted(users, key=lambda x: x['nota'], reverse=True)
         return context
