@@ -1,6 +1,7 @@
 django==1.8.1
 django-allauth==0.22.0
-django-uuidfield  # you don't have to use uuids, but I choose to.
-django-bootstrap3  # allauth doesn't require this but again I chose to.
-pillow
-
+django-uuidfield==0.5.0
+django-bootstrap3==6.2.2
+requests==2.6.0
+ipdb==0.8.1
+pillow==3.1.0
