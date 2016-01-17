@@ -6,25 +6,20 @@
 {% block content %}
 
 <div class="container">
-    <h1>Django jQuery File Upload Demo</h1>
-    <h2 class="lead">Basic version</h2>
-    <br>
-    <blockquote>
-        <p>File Upload widget with multiple file selection, drag&amp;drop support and progress bar for jQuery.<br>
-        Supports cross-domain, chunked and resumable file uploads.</p>
-    </blockquote>
-    <br>
+    <h1>Submit a problem</h1>
 
     <select class="form-control" id="form_task" name="task_id">
         {% for problem in problems_retrieved %}
             <option value="{{ problem.pk }}">{{ problem.name }} </option>
       {% endfor %}
-
     </select>
+
+    <br>
+
     <!-- The fileinput-button span is used to style the file input field as button -->
     <span class="btn btn-success fileinput-button" style="left:45%">
         <i class="glyphicon glyphicon-plus"></i>
-        <span>Select files...</span>
+        <span>Select file...</span>
         <!-- The file input field used as target for the file upload widget -->
         <input id="fileupload" type="file" name="file" multiple>
     </span>
@@ -37,18 +32,6 @@
     <!-- The container for the uploaded files -->
     <div id="files" class="files"></div>
     <br>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Demo Notes</h3>
-        </div>
-        <div class="panel-body">
-            <ul>
-                <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage (see <a href="https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support">Browser support</a>).</li>
-                <li>Please refer to the <a href="https://github.com/blueimp/jQuery-File-Upload">project website</a> and <a href="https://github.com/blueimp/jQuery-File-Upload/wiki">documentation</a> for more information.</li>
-                <li>Built with Twitter's <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS framework and Icons from <a href="http://glyphicons.com/">Glyphicons</a>.</li>
-            </ul>
-        </div>
-    </div>
 </div>
 {% upload_js %}
 
@@ -72,7 +55,6 @@ function csrfSafeMethod(method) {
 
 $(function () {
     'use strict';
-    // Change this to the location of your server-side upload handler:
     var csrftoken = $.cookie('csrftoken');
     $('#form_task').bind("click", function(){
         var url0 = '/upload/basic/' + '?problem_pk=' + $('#form_task option:selected').val();
@@ -102,7 +84,7 @@ $(function () {
             .parent().addClass($.support.fileInput ? undefined : 'disabled');
     });
     $('#form_task').trigger('click');
-    
+
 });
 </script>
 {% endblock %}
