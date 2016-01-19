@@ -1,3 +1,5 @@
+import math
+
 from django.shortcuts import render
 from django.views import generic
 
@@ -55,7 +57,7 @@ class RankingView(generic.TemplateView):
 
             d['codeforces_points'] = sum([x.score for x in ContestParticipation.objects.filter(user=user)])
             d['no_stress'] = user.score_fmi_no_stress / 20
-            d['csacademy'] = user.score_csacademy / 20
+            d['csacademy'] = ceil(user.score_csacademy / 20)
             d['max_points'] = 100 if user.school_year == 1 else 140
             d['score_extra'] = user.score_extra
             d['total'] = d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy'] + d['score_extra']
