@@ -57,7 +57,8 @@ class RankingView(generic.TemplateView):
             d['no_stress'] = user.score_fmi_no_stress / 20
             d['csacademy'] = user.score_csacademy / 20
             d['max_points'] = 100 if user.school_year == 1 else 140
-            d['total'] = d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy']
+            d['score_extra'] = user.score_extra
+            d['total'] = d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy'] + d['score_extra']
             pure_grade = round(float(d['total']) / float(d['max_points']) * 10)
             d['nota'] = min(pure_grade, 10.0)
             if d['nota'] >= 1:
