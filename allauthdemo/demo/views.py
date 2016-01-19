@@ -63,5 +63,5 @@ class RankingView(generic.TemplateView):
             d['nota'] = min(pure_grade, 10.0)
             if d['nota'] >= 1:
                 users.append(d)
-        context['users'] = sorted(users, key=lambda x: x['nota'], reverse=True)
+        context['users'] = sorted(users, key=lambda x: (x['nota'], x['total']), reverse=True)
         return context
