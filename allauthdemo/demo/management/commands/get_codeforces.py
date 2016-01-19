@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('--user',
-            action='store_true',
+            action='store',
             dest='user_handle',
             default=False,
         )
