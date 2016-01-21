@@ -40,6 +40,7 @@ class DemoUserEditView(UpdateView):
         return self.request.user
 
     def form_valid(self, form):
+        return
         form.save()
         messages.add_message(self.request, messages.INFO, 'User profile updated')
         return super(DemoUserEditView, self).form_valid(form)
