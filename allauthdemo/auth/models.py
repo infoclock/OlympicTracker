@@ -60,7 +60,7 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
     score_fmi_no_stress = models.PositiveSmallIntegerField('scor la fmi no stress', default=0)
     score_csacademy = models.PositiveSmallIntegerField('scor la csacademy', default=0)
     score_extra = models.PositiveSmallIntegerField('scor extra', default=0)
-    score_minus = models.SmallIntegerField('scor extra', default=0)
+    score_minus = models.SmallIntegerField('scor minus', default=0)
     is_staff = models.BooleanField(_('staff status'), default=False,
         help_text=_('Designates whether the user can log into this admin '
                     'site.'))
