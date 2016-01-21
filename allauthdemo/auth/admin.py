@@ -44,7 +44,7 @@ class DemoUserAdmin(UserAdmin):
 
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'display_name', 'score_extra', 'codeforces_handle')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'display_name', 'score_extra', 'codeforces_handle', 'score_minus')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
