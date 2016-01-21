@@ -60,7 +60,8 @@ class RankingView(generic.TemplateView):
             d['csacademy'] = int(math.ceil(float(user.score_csacademy) / 20.0))
             d['max_points'] = 100 if user.school_year == 1 else 140
             d['score_extra'] = user.score_extra
-            d['score_minus'] = user.score_minus
+            # e vina lui Nitu pentru formula asta
+            d['score_minus'] = -min(abs(user.score_minus), d['homework_points'])
             d['total'] = d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy'] + d['score_extra'] + d['score_minus']
             pure_grade = round(float(d['total']) / float(d['max_points']) * 10)
             d['nota'] = min(pure_grade, 10.0)
