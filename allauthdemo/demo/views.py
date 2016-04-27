@@ -49,5 +49,7 @@ class RankingView(generic.TemplateView):
             d['id'] = user.id
             d['codeforces_points'] = sum([x.score for x in ContestParticipation.objects.filter(user=user)])
 
+            users.append(d)
+
         context['users'] = sorted(users, key=lambda x: x['codeforces_points'], reverse=True)
         return context
