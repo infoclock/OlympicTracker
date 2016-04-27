@@ -41,31 +41,13 @@ class RankingView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(RankingView, self).get_context_data(**kwargs)
+
         users = []
         for user in DemoUser.objects.all():
             d = {}
             d['name'] = user.get_full_name()
             d['id'] = user.id
-
-            d['homework_points'] = 0
-            submissions = Submission.objects.filter(user=user)
-            problem_ids = set()
-            for submission in submissions:
-                if submission.problem.id not in problem_ids:
-                    problem_ids.add(submission.problem.id)
-                    d['homework_points'] += submission.problem.score
-
             d['codeforces_points'] = sum([x.score for x in ContestParticipation.objects.filter(user=user)])
-            d['no_stress'] = user.score_fmi_no_stress / 20
-            d['csacademy'] = int(math.ceil(float(user.score_csacademy) / 20.0))
-            d['max_points'] = 100 if user.school_year == 1 else 140
-            d['score_extra'] = user.score_extra
-            # e vina lui Nitu pentru formula asta
-            d['score_minus'] = -min(abs(user.score_minus), d['homework_points'])
-            d['total'] = d['homework_points'] + d['codeforces_points'] + d['no_stress'] + d['csacademy'] + d['score_extra'] + d['score_minus']
-            pure_grade = round(float(d['total']) / float(d['max_points']) * 10)
-            d['nota'] = min(pure_grade, 10.0)
-            if d['nota'] >= 1:
-                users.append(d)
+
         context['users'] = sorted(users, key=lambda x: (x['nota'], x['total']), reverse=True)
         return context

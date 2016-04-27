@@ -9,7 +9,7 @@ from allauthdemo.demo.models import ContestParticipation
 
 class Command(BaseCommand):
     CODEFORCES_JSON_DIR = os.path.join(settings.BASE_DIR, 'codeforces_json')
-    CONTEST_IDS = range(592, 616+1)
+    CONTEST_IDS = [658, 657, 639, 659, 656, 660, 661, 640, 662, 664, 663, 665, 669, 668, 641]
 
     def add_arguments(self, parser):
         parser.add_argument('--user',
@@ -57,7 +57,7 @@ class Command(BaseCommand):
                 if row['party']['members'][0]['handle'] == user.codeforces_handle:
                     participation = ContestParticipation(user=user, place=row['rank'], name=data['contest']['name'])
                     percentile = row['rank'] / len(data['rows']) * 100
-                    participation.score = self.get_score(percentile, 'Div. 1' in participation.name)
+                    participation.score = self.get_score(percentile, 'Div. 1' in participation.name or 'VK Cup' in participation.name)
                     participation.save()
                     print(participation.name, participation.score, "{0}/{1}".format(participation.place, len(data['rows'])))
                     break
