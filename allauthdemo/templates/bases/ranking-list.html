@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<p>Era posibila participarea la 6 concursuri. Deci un concurent care a participat la 1/2 din ele si ar lua 6 puncte, ar face 1/2 * 6 * 6 = 18 puncte.
+
 <div class="container">
   <h1>Ranking</h1>
    <div class="table-responsive">
@@ -13,6 +15,8 @@
                 <th> No </th>
                 <th> Name </th>
                 <th> Codeforces </th>
+                <th> Punctaj fictiv </th>
+                <th> Nota </th>
                 <th> Edit </th>
             </tr>
         </thead>
@@ -22,6 +26,8 @@
           <td>{{forloop.counter}}</td>
           <td>{{user.name}}</td>
           <td>{{user.codeforces_points}}</td>
+          <td>18</td>
+          <td>{{user.nota}}</td>
           <td><a href="/admin/allauthdemo_auth/demouser/{{user.id}}">Edit...</a></td>
         </tr>
         {% endfor %}
