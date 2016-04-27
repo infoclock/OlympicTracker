@@ -57,7 +57,7 @@ class Command(BaseCommand):
                 if row['party']['members'][0]['handle'] == user.codeforces_handle:
                     participation = ContestParticipation(user=user, place=row['rank'], name=data['contest']['name'])
                     percentile = row['rank'] / len(data['rows']) * 100
-                    participation.score = self.get_score(percentile, 'Div. 1' in participation.name or 'VK Cup' in participation.name)
+                    participation.score = self.get_score(percentile, 'Div. 1' in participation.name)
                     participation.save()
                     print(participation.name, participation.score, "{0}/{1}".format(participation.place, len(data['rows'])))
                     break
