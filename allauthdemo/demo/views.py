@@ -48,7 +48,7 @@ class RankingView(generic.TemplateView):
             d['name'] = user.get_full_name()
             d['id'] = user.id
             d['codeforces_points'] = sum([x.score for x in ContestParticipation.objects.filter(user=user)])
-            d['nota'] = d['codeforces_points'] / 18.0 * 10
+            d['nota'] = max(d['codeforces_points'] / 24.0 * 10, 10.0)
 
             users.append(d)
 
