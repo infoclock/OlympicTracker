@@ -17,6 +17,7 @@
                 <th> Codeforces </th>
                 <th> Punctaj fictiv </th>
                 <th> Nota </th>
+                <th> Echivaleaza? </th>
                 <th> Edit </th>
             </tr>
         </thead>
@@ -26,7 +27,8 @@
           <td>{{forloop.counter}}</td>
           <td>{{user.name}}</td>
           <td>{{user.codeforces_points}}</td>
-          <td>18</td>
+          <td>24</td>
+          <td>{{user.echivaleaza}}</td>
           <td>{{user.nota}}</td>
           <td><a href="/admin/allauthdemo_auth/demouser/{{user.id}}">Edit...</a></td>
         </tr>

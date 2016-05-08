@@ -55,12 +55,8 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=40, blank=True, null=True, unique=False)
     display_name = models.CharField(_('display name'), max_length=14, blank=True, null=True, unique=False)
     codeforces_handle = models.CharField(_('codeforces handle'), max_length=50, blank=True, null=True, unique=False)
-    infoarena_handle = models.CharField(_('infoarena handle'), max_length=50, blank=True, null=True, unique=False)
-    school_year = models.PositiveSmallIntegerField(_('daca vrei sa echivalezi prima oara trece 1, daca vrei a doua oara trece 2'), default=0, unique=False)
-    score_fmi_no_stress = models.PositiveSmallIntegerField('scor la fmi no stress', default=0)
-    score_csacademy = models.PositiveSmallIntegerField('scor la csacademy', default=0)
-    score_extra = models.PositiveSmallIntegerField('scor extra', default=0)
-    score_minus = models.SmallIntegerField('scor minus', default=0)
+    is_participating_2016 = models.BooleanField(_('Partcipating 2015-2016 2nd semester'), default=False,
+                                                help_text=_('Bifeaza aici daca esti anul 1 si vrei sa echivalezi semestrul 2'))
     is_staff = models.BooleanField(_('staff status'), default=False,
         help_text=_('Designates whether the user can log into this admin '
                     'site.'))
