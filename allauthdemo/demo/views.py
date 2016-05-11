@@ -41,6 +41,7 @@ class RankingView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(RankingView, self).get_context_data(**kwargs)
+        context['minimum'] = 27.0
 
         users = []
         for user in DemoUser.objects.all():
@@ -49,7 +50,7 @@ class RankingView(generic.TemplateView):
             d['id'] = user.id
             d['echivaleaza'] = user.is_participating_2016
             d['codeforces_points'] = sum([x.score for x in ContestParticipation.objects.filter(user=user)])
-            d['nota'] = round(min(d['codeforces_points'] / 24.0 * 10, 10.0), 1)
+            d['nota'] = round(min(d['codeforces_points'] / context['minimum'] * 10, 10.0), 1)
             if d['echivaleaza']:
                 users.append(d)
 
