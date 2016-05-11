@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import permission_required
 
 from . import views
 import allauthdemo.views
-from allauthdemo.demo.views import ProblemView, SubmissionView, RankingView
+from allauthdemo.demo.views import ProblemView, SubmissionView, RankingView, ParticipantView
 
 admin.autodiscover()
 
@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^problem-list$', ProblemView.as_view(), name='problem_list'),
     url(r'^submission-list$', SubmissionView.as_view(), name='submission'),
     url(r'^ranking$', RankingView.as_view(), name='ranking'),
+    url(r'^participant/(?P<user_id>[0-9]+)/$', ParticipantView.as_view(), name='participant'),
 
     url(r'^terms/$', TemplateView.as_view(template_name='visitor/terms.html'), name='website_terms'),
     url(r'^contact$', TemplateView.as_view(template_name='visitor/contact.html'), name='website_contact'),

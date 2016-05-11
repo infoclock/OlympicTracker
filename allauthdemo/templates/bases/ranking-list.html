@@ -39,7 +39,7 @@
         {% for user in users %}
         <tr>
           <td>{{forloop.counter}}</td>
-          <td>{{user.name}}</td>
+          <td><a href="/participant/{{user.id}}">{{user.name}}</a></td>
           <td>{{user.codeforces_points}}</td>
           <td>{{minimum}}</td>
           <td>{{user.nota}}</td>

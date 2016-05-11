@@ -1,0 +1,34 @@
+{% extends user.is_authenticated|yesno:"bases/bootstrap-member.html,bases/bootstrap-minimal.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{{name}}</h1>
+   <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th> No </th>
+                <th> Contest </th>
+                <th> Place </th>
+                <th> Points </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for p in participations %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{p.name}}</td>
+          <td>{{p.place}}</td>
+          <td>{{p.score}}</td>
+        </tr>
+        {% endfor %}
+        <tbody>
+      </body>
+      </table>
+  </div>
+</div>
+
+{% endblock %}

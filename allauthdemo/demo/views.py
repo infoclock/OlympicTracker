@@ -56,3 +56,23 @@ class RankingView(generic.TemplateView):
 
         context['users'] = sorted(users, key=lambda x: x['codeforces_points'], reverse=True)
         return context
+
+
+class ParticipantView(generic.TemplateView):
+    template_name = '../templates/bases/participant.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ParticipantView, self).get_context_data(**kwargs)
+        user = DemoUser.objects.get(pk=int(context['user_id']))
+        context['name'] = user.get_full_name()
+
+        res = []
+        for participation in ContestParticipation.objects.filter(user=user):
+            p = {}
+            p['name'] = participation.name
+            p['place'] = participation.place
+            p['score'] = participation.score
+            res.append(p)
+
+        context['participations'] = res
+        return context
