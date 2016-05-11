@@ -50,8 +50,8 @@ class RankingView(generic.TemplateView):
             d['echivaleaza'] = user.is_participating_2016
             d['codeforces_points'] = sum([x.score for x in ContestParticipation.objects.filter(user=user)])
             d['nota'] = round(min(d['codeforces_points'] / 24.0 * 10, 10.0), 1)
-
-            users.append(d)
+            if d['codeforces_points'] > 0 or d['echivaleaza']:
+                users.append(d)
 
         context['users'] = sorted(users, key=lambda x: x['codeforces_points'], reverse=True)
         return context
