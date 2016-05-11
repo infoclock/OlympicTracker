@@ -6,7 +6,6 @@
 
 <div class="container">
   <h1>Ranking</h1>
-  <p>Era posibila participarea la 8 concursuri. Deci un concurent care a participat la 1/2 din ele si ar lua 6 puncte, ar face 1/2 * 8 * 6 = 24 puncte.
 
    <div class="table-responsive">
       <table class="table table-bordered table-striped">
@@ -27,7 +26,7 @@
           <td>{{forloop.counter}}</td>
           <td>{{user.name}}</td>
           <td>{{user.codeforces_points}}</td>
-          <td>24</td>
+          <td>{{minimum}}</td>
           <td>{{user.nota}}</td>
           <td>{{user.echivaleaza}}</td>
           <td><a href="/admin/allauthdemo_auth/demouser/{{user.id}}">Edit...</a></td>
