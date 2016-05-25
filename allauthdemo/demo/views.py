@@ -41,7 +41,7 @@ class RankingView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(RankingView, self).get_context_data(**kwargs)
-        context['minimum'] = 11 * 3.0
+        context['minimum'] = 12 * 3.0
 
         users = []
         for user in DemoUser.objects.all():
