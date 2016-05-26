@@ -36,6 +36,8 @@ class Command(BaseCommand):
         for user in users:
             self.get_user_results(user)
 
+        self.handle_special_cases()
+
     def get_codeforces_json(self, contest_id):
         print("Getting contest ", contest_id)
         contest_json_path = os.path.join(self.CODEFORCES_JSON_DIR, str(contest_id) + '.json')
@@ -64,6 +66,18 @@ class Command(BaseCommand):
                     participation.save()
                     print(participation.name, participation.score, "{0}/{1}".format(participation.place, len(data['rows'])))
                     break
+
+    def handle_special_cases(self):
+        """DIV1 people who participated unoficially in div2 competitions"""
+                # codeforces, place, total participants, contest name
+        cases = [('Kira96', 195, 7429, 'Codeforces Round #350 (Div. 2) #unoficial')]
+
+        for case in cases:
+            user = DemoUser.objects.get(codeforces_handle=case[0])
+            participation = ContestParticipation(user=user, place=case[1], name=case[3])
+            percentile = case[1] / case[2] * 100
+            participation.score = self.get_score(percentile, False)
+            participation.save()
 
     def get_score(self, percentile, is_div_1):
         DIV2 = [
