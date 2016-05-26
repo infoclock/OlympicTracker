@@ -70,7 +70,10 @@ class Command(BaseCommand):
     def handle_special_cases(self):
         """DIV1 people who participated unoficially in div2 competitions"""
                 # codeforces, place, total participants, contest name
-        cases = [('Kira96', 195, 7429, 'Codeforces Round #350 (Div. 2) #unoficial')]
+        cases = [
+            ('Kira96', 195, 7429, 'Codeforces Round #350 (Div. 2) #unoficial'),
+            ('Kira96', 75, 6099, 'Codeforces Round #354 (Div. 2) #unoficial'),
+        ]
 
         for case in cases:
             user = DemoUser.objects.get(codeforces_handle=case[0])
