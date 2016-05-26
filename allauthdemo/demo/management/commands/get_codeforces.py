@@ -71,8 +71,8 @@ class Command(BaseCommand):
         """DIV1 people who participated unoficially in div2 competitions"""
                 # codeforces, place, total participants, contest name
         cases = [
-            ('Kira96', 195, 7429, 'Codeforces Round #350 (Div. 2) #unoficial'),
-            ('Kira96', 75, 6099, 'Codeforces Round #354 (Div. 2) #unoficial'),
+            ('Kira96', 195, 7429, 'Codeforces Round #350 (Div. 2) #unofficial'),
+            ('Kira96', 75, 6099, 'Codeforces Round #354 (Div. 2) #unofficial'),
         ]
 
         for case in cases:
