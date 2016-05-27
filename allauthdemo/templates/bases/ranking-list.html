@@ -34,10 +34,14 @@
             <tr>
                 <th> No </th>
                 <th> Name </th>
-                <th> Codeforces </th>
-                <th> Punctaj fictiv </th>
-                <th> Nota </th>
-                <th> Codeforces </th>
+                <th> Codeforces Handle </th>
+                <th> Codeforces Points </th>
+                <th> Minimal Codeforces Points </th>
+                <th> Codeforces Grade </th>
+                <th> Problems solved 1st exam </th>
+                <th> Problems solved 2nd exam </th>
+                <th> Exam Grade </th>
+                <th> Final Grade </th>
                 <th> Edit </th>
             </tr>
         </thead>
@@ -46,10 +50,15 @@
         <tr>
           <td>{{forloop.counter}}</td>
           <td><a href="/participant/{{user.id}}">{{user.name}}</a></td>
+          <td><a href="http://codeforces.com/profile/{{user.codeforces_handle}}">{{user.codeforces_handle}}</a></td>
           <td>{{user.codeforces_points}}</td>
           <td>{{minimum}}</td>
-          <td>{{user.nota}}</td>
-          <td><a href="http://codeforces.com/profile/{{user.codeforces_handle}}">{{user.codeforces_handle}}</a></td>
+          <td>{{user.codeforces_grade}}</td>
+          <td>{{user.1st}}</td>
+          <td>{{user.2nd}}</td>
+          <td>{{user.2nd}}</td>
+          <td>N/A</td>
+          <td>N/A</td>
           <td><a href="/admin/allauthdemo_auth/demouser/{{user.id}}">Edit...</a></td>
         </tr>
         {% endfor %}

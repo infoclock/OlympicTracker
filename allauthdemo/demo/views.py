@@ -51,7 +51,9 @@ class RankingView(generic.TemplateView):
             d['codeforces_handle'] = user.codeforces_handle
             d['echivaleaza'] = user.is_participating_2016
             d['codeforces_points'] = sum([x.score for x in ContestParticipation.objects.filter(user=user)])
-            d['nota'] = round(min(d['codeforces_points'] / context['minimum'] * 10, 10.0), 1)
+            d['codeforces_grade'] = round(min(d['codeforces_points'] / context['minimum'] * 10, 10.0), 1)
+            d['1st'] = user.problems_solved_first_exam
+            d['2nd'] = user.problems_solved_2nd_exam
             if d['echivaleaza']:
                 users.append(d)
 
