@@ -48,6 +48,7 @@ class RankingView(generic.TemplateView):
             d = {}
             d['name'] = user.get_full_name()
             d['id'] = user.id
+            d['codeforces_handle'] = user.codeforces_handle
             d['echivaleaza'] = user.is_participating_2016
             d['codeforces_points'] = sum([x.score for x in ContestParticipation.objects.filter(user=user)])
             d['nota'] = round(min(d['codeforces_points'] / context['minimum'] * 10, 10.0), 1)
