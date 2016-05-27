@@ -68,7 +68,12 @@ class RankingView(generic.TemplateView):
                     4: 9,
                 }
                 d['exam_grade'] = distribution[best_solved]
-            d['final_grade'] = if d['exam_grade'] != '-' (d['exam_grade'] + d['codeforces_grade']) / 2 else '-'
+
+            if d['exam_grade'] != '-':
+                d['final_grade'] =  (d['exam_grade'] + d['codeforces_grade']) / 2
+            else:
+                d['final_grade'] = '-'
+
             if d['echivaleaza']:
                 users.append(d)
 
