@@ -58,17 +58,17 @@ class RankingView(generic.TemplateView):
             d['exam_grade'] = 0
             if best_solved > 4:
                 d['exam_grade'] = 10.0
+            elif best_solved < 2:
+                d['exam_grade'] = '-'
             else:
                 distribution = {
                     # no solved problems - grade
-                    0: 1,
-                    1: 3,
                     2: 5,
                     3: 7,
                     4: 9,
                 }
                 d['exam_grade'] = distribution[best_solved]
-            d['final_grade'] = (d['exam_grade'] + d['codeforces_grade']) / 2
+            d['final_grade'] = if d['exam_grade'] != '-' (d['exam_grade'] + d['codeforces_grade']) / 2 else '-'
             if d['echivaleaza']:
                 users.append(d)
 
