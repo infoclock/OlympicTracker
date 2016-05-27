@@ -33,7 +33,7 @@
         <thead>
             <tr>
                 <th> No </th>
-                <th> Name </th>
+                <th class="col-md-3"> Name </th>
                 <th> Codeforces Handle </th>
                 <th> Codeforces Points </th>
                 <th> Minimal Codeforces Points </th>
@@ -49,13 +49,12 @@
         {% for user in users %}
         <tr>
           <td>{{forloop.counter}}</td>
-          <td><a href="/participant/{{user.id}}">{{user.name}}</a></td>
+          <td class="col-md-3"><a href="/participant/{{user.id}}">{{user.name}}</a></td>
           <td><a href="http://codeforces.com/profile/{{user.codeforces_handle}}">{{user.codeforces_handle}}</a></td>
           <td>{{user.codeforces_points}}</td>
           <td>{{minimum}}</td>
           <td>{{user.codeforces_grade}}</td>
           <td>{{user.1st}}</td>
-          <td>{{user.2nd}}</td>
           <td>{{user.2nd}}</td>
           <td>N/A</td>
           <td>N/A</td>
