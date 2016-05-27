@@ -72,7 +72,7 @@ class RankingView(generic.TemplateView):
             if d['exam_grade'] != '-':
                 d['final_grade'] =  (d['exam_grade'] + d['codeforces_grade']) / 2
             else:
-                d['final_grade'] = '-'
+                d['final_grade'] = 0
 
             if d['echivaleaza']:
                 users.append(d)
