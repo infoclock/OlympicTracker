@@ -64,6 +64,8 @@ class DemoUser(AbstractBaseUser, PermissionsMixin):
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    problems_solved_first_exam = models.PositiveSmallIntegerField('problems solved first exam', default=0)
+    problems_solved_second_exam = models.PositiveSmallIntegerField('problems solved second exam', default=0)
 
     objects = MyUserManager()
 
