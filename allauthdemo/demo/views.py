@@ -54,6 +54,21 @@ class RankingView(generic.TemplateView):
             d['codeforces_grade'] = round(min(d['codeforces_points'] / context['minimum'] * 10, 10.0), 1)
             d['1st'] = user.problems_solved_first_exam
             d['2nd'] = user.problems_solved_second_exam
+            best_solved = max(user.problems_solved_first_exam, user.problems_solved_second_exam)
+            d['exam_grade'] = 0
+            if best_solved > 4:
+                d['exam_grade'] = 10.0
+            else:
+                distribution = {
+                    # no solved problems - grade
+                    0: 1,
+                    1: 3,
+                    2: 5,
+                    3: 7,
+                    4: 9,
+                }
+                d['exam_grade'] = distribution[best_solved]
+            d['final_grade'] = (d['exam_grade'] + d['codeforces_grade']) /
             if d['echivaleaza']:
                 users.append(d)
 
