@@ -72,7 +72,7 @@ class RankingView(generic.TemplateView):
             if d['echivaleaza']:
                 users.append(d)
 
-        context['users'] = sorted(users, key=lambda x: x['codeforces_points'], reverse=True)
+        context['users'] = sorted(users, key=lambda x: x['final_grade'], reverse=True)
         return context
 
 
