@@ -73,6 +73,8 @@ class Command(BaseCommand):
         cases = [
             ('Kira96', 195, 7429, 'Codeforces Round #350 (Div. 2) #unofficial'),
             ('Kira96', 75, 6099, 'Codeforces Round #354 (Div. 2) #unofficial'),
+            ('Kira96', 75, 6099, 'Codeforces Round #354 (Div. 2) #unofficial'),
+            ('plus10UltimateOrb', 46, 8527, 'Codeforces Round #353 (Div. 2) #unofficial'),
         ]
 
         for case in cases:
