@@ -53,11 +53,11 @@
           <td><a href="http://codeforces.com/profile/{{user.codeforces_handle}}">{{user.codeforces_handle}}</a></td>
           <td>{{user.codeforces_points}}</td>
           <td>{{minimum}}</td>
-          <td>{{user.codeforces_grade}}</td>
+          <td><b>{{user.codeforces_grade}}</b></td>
           <td>{{user.1st}}</td>
           <td>{{user.2nd}}</td>
-          <td>{{user.exam_grade}}</td>
-          <td>{{user.final_grade}}</td>
+          <td><b>{{user.exam_grade}}</b></td>
+          <td><b>{{user.final_grade}}</b></td>
           <td><a href="/admin/allauthdemo_auth/demouser/{{user.id}}">Edit...</a></td>
         </tr>
         {% endfor %}
