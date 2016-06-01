@@ -75,6 +75,7 @@ class Command(BaseCommand):
             ('Kira96', 75, 6099, 'Codeforces Round #354 (Div. 2) #unofficial'),
             ('Kira96', 75, 6099, 'Codeforces Round #354 (Div. 2) #unofficial'),
             ('plus10UltimateOrb', 46, 8527, 'Codeforces Round #353 (Div. 2) #unofficial'),
+            ('plus10UltimateOrb', 11, 5079, 'Codeforces Round #354 (Div. 2) #unofficial'),
         ]
 
         for case in cases:
