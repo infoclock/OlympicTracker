@@ -12,7 +12,7 @@ class Command(BaseCommand):
     CONTEST_IDS = [658, 657, 639, 659, 660, 661, 640, 662, 664, 663, 665, 669, 668, 641, 643, 673, 674, 670, 666, 667,
                    671, 672, # codeforces 352
                    675, # codeforces 353
-                   676] # codeforces 354
+                   676, 677] # codeforces 354 + 355
 
     def add_arguments(self, parser):
         parser.add_argument('--user',
