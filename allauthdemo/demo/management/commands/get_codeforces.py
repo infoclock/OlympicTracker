@@ -14,19 +14,8 @@ class Command(BaseCommand):
                    675, # codeforces 353
                    676, 677] # codeforces 354 + 355
 
-    def add_arguments(self, parser):
-        parser.add_argument('--user',
-            action='store',
-            dest='user_handle',
-            default=False,
-        )
-
     def handle(self, *args, **options):
-        users = []
-        if options['user_handle']:
-            users.append(DemoUser.objects.get(codeforces_handle=options['user_handle']))
-        else:
-            users = DemoUser.objects.all()
+        users = DemoUser.objects.all()
 
         for contest in self.CONTEST_IDS:
             contest_json_path = os.path.join(self.CODEFORCES_JSON_DIR, str(contest) + '.json')
